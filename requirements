@@ -1,0 +1,5 @@
+asyncio==3.4.3
+ccxt==4.0.36
+loguru==0.7.0
+requests==2.31.0
+web3==6.6.1
