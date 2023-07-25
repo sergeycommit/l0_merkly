@@ -26,12 +26,11 @@ if __name__ == "__main__":
         with open('withdraw_addresses', 'r', encoding='utf-8-sig') as f:
             addresses = [row.strip() for row in f]
 
-        if RANDOM_WITHDRAW:
-            amount = random.uniform(WITHDRAW_AMOUNT_FROM, WITHDRAW_AMOUNT_TO)
-        else:
-            amount = WITHDRAW_AMOUNT_FROM
-
         for address in addresses:
+            if RANDOM_WITHDRAW:
+                amount = random.uniform(WITHDRAW_AMOUNT_FROM, WITHDRAW_AMOUNT_TO)
+            else:
+                amount = WITHDRAW_AMOUNT_FROM
             binance_withdraw(address, amount, symbolWithdraw, WITHDRAW_NETWORK)
 
 
