@@ -9,7 +9,6 @@ from config import ERC20_ABI
 from settings import MAX_GAS_CHARGE, GAS_WAIT
 from data.network_data import DATA
 
-
 def decimalToInt(num, decimal):
     return num/ (10**decimal)
 
