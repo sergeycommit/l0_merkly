@@ -31,7 +31,8 @@ if __name__ == "__main__":
 
         for address in addresses:
             if RANDOM_WITHDRAW:
-                amount = random.uniform(WITHDRAW_AMOUNT_FROM, WITHDRAW_AMOUNT_TO)
+                amount = round(random.uniform(WITHDRAW_AMOUNT_FROM, WITHDRAW_AMOUNT_TO), 9)
+                print(amount)
             else:
                 amount = WITHDRAW_AMOUNT_FROM
             binance_withdraw(address, amount, symbolWithdraw, WITHDRAW_NETWORK)
