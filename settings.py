@@ -25,7 +25,7 @@ BRIDGE_RANDOM = True   # True - рандомное количество из д�
 BRIDGE_AMOUNT_FROM = 0.000001
 BRIDGE_AMOUNT_TO = 0.00007
 CHAIN_FROM = 'gnosis'
-TO_CHAIN = 'fuse'   # дешевые сети celo, gnosis, klaytn, fuse
+TO_CHAIN = ['tenet', 'dfk']  # выбирает одну сеть из списка
 
 "__________________________________________________________________________________________________"
 
@@ -79,6 +79,7 @@ MAX_GAS_CHARGE = {
     'polygon_zkevm' : 0.5,
     'core'          : 0.1,
     'harmony'       : 0.1,
+    'dfk'           : 0.1
 }
 GAS_WAIT = 15
 

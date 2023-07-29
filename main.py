@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
         for address in addresses:
             if RANDOM_WITHDRAW:
-                amount = round(random.uniform(WITHDRAW_AMOUNT_FROM, WITHDRAW_AMOUNT_TO), 9)
+                amount = round(random.uniform(WITHDRAW_AMOUNT_FROM, WITHDRAW_AMOUNT_TO), 8)
                 print(amount)
             else:
                 amount = WITHDRAW_AMOUNT_FROM
@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     if MODULE == 2:
         for key in private_keys:
-            merkly_refuel(key, CHAIN_FROM, TO_CHAIN, BRIDGE_AMOUNT_FROM, BRIDGE_AMOUNT_TO)
+            merkly_refuel(key, CHAIN_FROM, random.choice(TO_CHAIN), BRIDGE_AMOUNT_FROM, BRIDGE_AMOUNT_TO)
 
     if MODULE == 4:
         for key in private_keys:
