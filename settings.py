@@ -61,7 +61,8 @@ General settings
 # контракты veSTG для стейкинга на Stargate. Добавить сюда контракт veSTG для возможности стейкинга в сети
 veSTG_TOKEN_CONTRACT = {
     'polygon': '0x3AB2DA31bBD886A7eDF68a6b60D3CDe657D3A15D',
-    'fantom': '0x933421675cdc8c280e5f21f0e061e77849293dba'
+    'fantom': '0x933421675cdc8c280e5f21f0e061e77849293dba',
+    'optimism': '0x43d2761ed16C89A2C4342e2B16A3C61Ccf88f05B',
                         }
 
 MAX_GAS_CHARGE = {
