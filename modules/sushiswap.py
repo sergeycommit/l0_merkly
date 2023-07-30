@@ -13,11 +13,43 @@ from data.abi_sushi import ABI_SUSHI
 from modules.helpers import decimalToInt, check_balance, intToDecimal, add_gas_price, add_gas_limit_layerzero, \
     checker_total_fee, sign_tx, check_status_tx
 
-def sushi(privatekey, from_chain, amount_from, amount_to, token_from="MATIC", token_to="STG"):
+
+SUSHISWAP_CONTRACTS = {
+    'ethereum'      : '0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F',
+    'optimism'      : '0x4C5D5234f232BD2D76B96aA33F5AE4FCF0E4BFAb',
+    'bsc'           : '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
+    'arbitrum'      : '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
+    'nova'          : '0x1b02da8cb0d097eb8d57a175b88c7d8b47997506',
+    'polygon'       : '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
+    'polygon_zkevm' : '',
+    'fantom'        : '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
+    'zksync'        : '',
+    'zksync_lite'   : '',
+    'starknet'      : '',
+}
+
+TOKEN_CONTRACTS = {
+    'ethereum'      : '',
+    'optimism'      : {'ETH': '0x4200000000000000000000000000000000000006',
+                       "STG": '0x296f55f8fb28e498b858d0bcda06d955b2cb3f97'},
+    'bsc'           : '',
+    'arbitrum'      : '',
+    'nova'          : {'ETH': '0x722E8BdD2ce80A4422E880164f2079488e115365',
+                       'STG': '0x08cF9090443691532A5227aD18F9d18c59398837'},
+    'polygon'       : {'MATIC': '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
+                       "STG": '0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590'},
+    'polygon_zkevm' : '',
+    'fantom'        : '',
+    'zksync'        : '',
+    'zksync_lite'   : '',
+    'starknet'      : '',
+}
+
+def sushi(privatekey, from_chain, token_from, token_to, amount_from, amount_to, slippage):
 
     try:
-        from_token = Web3.to_checksum_address("0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270")
-        to_token = Web3.to_checksum_address("0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590")
+        from_token = Web3.to_checksum_address(TOKEN_CONTRACTS[from_chain][token_from])
+        to_token = Web3.to_checksum_address(TOKEN_CONTRACTS[from_chain][token_to])
 
         module_str = f'stargate_stake'
         logger.info(module_str)
@@ -31,7 +63,7 @@ def sushi(privatekey, from_chain, amount_from, amount_to, token_from="MATIC", to
         wallet      = account.address
         print(wallet)
 
-        contract = web3.eth.contract(address=Web3.to_checksum_address("0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"),
+        contract = web3.eth.contract(address=Web3.to_checksum_address(SUSHISWAP_CONTRACTS[from_chain]),
                                                                       abi=ABI_SUSHI)
 
         value = intToDecimal(amount, 18)
@@ -42,7 +74,7 @@ def sushi(privatekey, from_chain, amount_from, amount_to, token_from="MATIC", to
         print(value*stg_price)
 
         contract_txn = contract.functions.swapExactETHForTokens(
-            int(value*stg_price*0.95),  # amountOutMin
+            int(value*stg_price*((100-slippage)/100)),  # amountOutMin
             [from_token, to_token],  # path
             wallet,  # receiver
             (int(time.time()) + 10000)  # deadline

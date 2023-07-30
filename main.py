@@ -1,4 +1,5 @@
 import random
+import time
 
 from modules.merkly import merkly_refuel
 from modules.binance_withdraw import binance_withdraw
@@ -19,7 +20,7 @@ if __name__ == "__main__":
         3.  stargate_bridge (soon)
         4.  stake_stargate
         5.  snapshoter (soon)
-        6.  sushi
+        6.  sushiswap
         Выберите модуль (0 - 6) : '''))
 
     with open('private_keys.txt', 'r', encoding='utf-8-sig') as file:
@@ -36,16 +37,21 @@ if __name__ == "__main__":
             else:
                 amount = WITHDRAW_AMOUNT_FROM
             binance_withdraw(address, amount, symbolWithdraw, WITHDRAW_NETWORK)
+            time.sleep(random.randint(WAIT_FROM, WAIT_TO))
 
     if MODULE == 2:
         for key in private_keys:
             merkly_refuel(key, CHAIN_FROM, random.choice(TO_CHAIN), BRIDGE_AMOUNT_FROM, BRIDGE_AMOUNT_TO)
+            time.sleep(random.randint(WAIT_FROM, WAIT_TO))
 
     if MODULE == 4:
         for key in private_keys:
             approve(key, STAKE_CHAIN, STAKE_AMOUNT_TO)
             stargate_stake(key, STAKE_CHAIN, STAKE_AMOUNT_FROM, STAKE_AMOUNT_TO)
+            time.sleep(random.randint(WAIT_FROM, WAIT_TO))
 
     if MODULE == 6:
         for key in private_keys:
-            sushi(key, SUSHI_CHAIN, SWAP_AMOUNT_FROM, SWAP_AMOUNT_TO)
+            sushi(key, SUSHI_CHAIN.lower(), SWAP_TOKEN_FROM.upper(), SWAP_TOKEN_TO.upper(),
+                  SWAP_AMOUNT_FROM, SWAP_AMOUNT_TO, SLIPPAGE)
+            time.sleep(random.randint(WAIT_FROM, WAIT_TO))
