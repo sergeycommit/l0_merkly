@@ -82,7 +82,7 @@ def add_gas_limit_layerzero(web3, contract_txn):
 
     pluser = [1.01, 1.02]
     #gasLimit = web3.eth.estimate_gas(contract_txn)
-    gasLimit = 200000
+    gasLimit = 1000000
     print('add_gas_limit', gasLimit)
     contract_txn['gas'] = int(gasLimit * random.uniform(pluser[0], pluser[1]))
     return contract_txn
