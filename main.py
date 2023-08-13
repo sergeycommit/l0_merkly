@@ -5,6 +5,7 @@ from modules.merkly import merkly_refuel
 from modules.binance_withdraw import binance_withdraw
 from modules.stargate_staking import stargate_stake, approve
 from modules.sushiswap import sushi
+from modules.erc20_generator import erc20_generate
 from settings import *
 
 if __name__ == "__main__":
@@ -26,7 +27,10 @@ if __name__ == "__main__":
     with open('private_keys.txt', 'r', encoding='utf-8-sig') as file:
         private_keys = [row.strip() for row in file]
 
-    if MODULE == 1:
+    if MODULE == 0:
+        erc20_generate(WAIT_FROM, WAIT_TO)
+
+    elif MODULE == 1:
         with open('withdraw_addresses', 'r', encoding='utf-8-sig') as f:
             addresses = [row.strip() for row in f]
 
@@ -39,18 +43,18 @@ if __name__ == "__main__":
             binance_withdraw(address, amount, symbolWithdraw, WITHDRAW_NETWORK)
             time.sleep(random.randint(WAIT_FROM, WAIT_TO))
 
-    if MODULE == 2:
+    elif MODULE == 2:
         for key in private_keys:
             merkly_refuel(key, CHAIN_FROM, random.choice(TO_CHAIN), BRIDGE_AMOUNT_FROM, BRIDGE_AMOUNT_TO)
             time.sleep(random.randint(WAIT_FROM, WAIT_TO))
 
-    if MODULE == 4:
+    elif MODULE == 4:
         for key in private_keys:
             approve(key, STAKE_CHAIN, STAKE_AMOUNT_TO)
-            stargate_stake(key, STAKE_CHAIN, STAKE_AMOUNT_FROM, STAKE_AMOUNT_TO)
+            stargate_stake(key, STAKE_CHAIN, STAKE_AMOUNT_FROM, STAKE_AMOUNT_TO, ALL_BALANCE_STAKING)
             time.sleep(random.randint(WAIT_FROM, WAIT_TO))
 
-    if MODULE == 6:
+    elif MODULE == 6:
         for key in private_keys:
             sushi(key, SUSHI_CHAIN.lower(), SWAP_TOKEN_FROM.upper(), SWAP_TOKEN_TO.upper(),
                   SWAP_AMOUNT_FROM, SWAP_AMOUNT_TO, SLIPPAGE)

@@ -10,10 +10,11 @@ from data.network_data import DATA, LAYERZERO_CHAINS_ID
 from data.abi_stargate import ABI_STARGATE, ABI_STARGATE_APPROVE
 from modules.helpers import decimalToInt, check_balance, intToDecimal, add_gas_price, add_gas_limit_layerzero, \
     checker_total_fee, sign_tx, check_status_tx
+from config import ERC20_ABI
 
 STG_TOKEN_CONTRACT = '0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590'
 
-def stargate_stake(privatekey, from_chain, amount_from, amount_to):
+def stargate_stake(privatekey, from_chain, amount_from, amount_to, all_balance):
 
     try:
 
@@ -33,6 +34,11 @@ def stargate_stake(privatekey, from_chain, amount_from, amount_to):
                                                                       abi=ABI_STARGATE)
 
         value = intToDecimal(amount, 18)
+        if all_balance:
+            stg_contract = web3.eth.contract(address=Web3.to_checksum_address(
+                '0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590'), abi=ERC20_ABI)
+            stg_balance = stg_contract.functions.balanceOf(web3.to_checksum_address(wallet)).call()
+            value = stg_balance
         print('value', value)
 
         contract_txn = contract.functions.create_lock(
