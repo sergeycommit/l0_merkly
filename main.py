@@ -27,6 +27,8 @@ if __name__ == "__main__":
     with open('private_keys.txt', 'r', encoding='utf-8-sig') as file:
         private_keys = [row.strip() for row in file]
 
+    random.shuffle(private_keys)
+
     if MODULE == 0:
         erc20_generate(WAIT_FROM, WAIT_TO)
 
