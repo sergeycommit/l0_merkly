@@ -25,7 +25,7 @@ MERKLY_CONTRACTS = {
     'celo'          : '0xe33519c400b8f040e73aeda2f45dfdd4634a7ca0',
     'moonbeam'      : '0x766b7aC73b0B33fc282BdE1929db023da1fe6458',
     'moonriver'     : '0x97337A9710BEB17b8D77cA9175dEFBA5e9AFE62e',
-    'klaytn'        : '0x79db0f1a83f8e743550eeb5dd5b0b83334f2f083'
+    'klaytn'        : '0xd02ffae68d902453b44a9e45dc257aca54fb88b2'
 }
 
 
