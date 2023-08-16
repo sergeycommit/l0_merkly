@@ -42,6 +42,9 @@ DATA = {
 
     'moonriver': {'rpc': 'https://moonriver.public.blastapi.io', 'scan': 'https://moonriver.moonscan.io/tx',
                   'token': 'MOVR', 'chain_id': 1285},
+
+    'klaytn': {'rpc': 'https://rpc.ankr.com/klaytn', 'scan': 'https://www.klaytnfinder.io/tx',
+                  'token': 'KLAY', 'chain_id': 8217},
 }
 
 LAYERZERO_CHAINS_ID = {

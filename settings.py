@@ -18,14 +18,15 @@ WITHDRAW_AMOUNT_TO = 0.025
 """
 Module 2 - merkly
 
-Выберите сети и количество, Merkly работает только с небольшими суммами
+Выберите сети и количество, Merkly работает только с небольшими суммами. Возможность бриджа
+проверьте на оф сайте https://minter.merkly.com/gas
 """
 
 BRIDGE_RANDOM = True   # True - рандомное количество из диапазона, False - фиксированное
 BRIDGE_AMOUNT_FROM = 0.000001
 BRIDGE_AMOUNT_TO = 0.00007
-CHAIN_FROM = 'gnosis'
-TO_CHAIN = ['tenet', 'dfk']  # выбирает одну сеть из списка
+CHAIN_FROM = 'klaytn'
+TO_CHAIN = ['celo']  # выбирает одну сеть из списка
 
 "__________________________________________________________________________________________________"
 
@@ -39,7 +40,8 @@ Module 4 - stargate staking
 STAKE_RANDOM = True   # True - рандомное количество из диапазона, False - фиксированное
 STAKE_AMOUNT_FROM = 0.000001
 STAKE_AMOUNT_TO = 0.00007
-STAKE_CHAIN = 'fantom'
+STAKE_CHAIN = 'polygon'
+ALL_BALANCE_STAKING = True      # True - стейк весь баланс stg, False - стейкать баланс с настройками выше
 
 "__________________________________________________________________________________________________"
 

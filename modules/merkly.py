@@ -1,14 +1,11 @@
-import time
-
 from loguru import logger
 from web3 import Web3
 import random
 from eth_abi import encode
 
-from settings import *
 from data.network_data import DATA, LAYERZERO_CHAINS_ID
 from data.abi_merkly import ABI_MERKLY
-from modules.helpers import decimalToInt, check_balance, intToDecimal, add_gas_price, add_gas_limit_layerzero, \
+from modules.helpers import check_balance, intToDecimal, add_gas_price, add_gas_limit_layerzero, \
     checker_total_fee, sign_tx, check_status_tx
 
 
@@ -28,6 +25,7 @@ MERKLY_CONTRACTS = {
     'celo'          : '0xe33519c400b8f040e73aeda2f45dfdd4634a7ca0',
     'moonbeam'      : '0x766b7aC73b0B33fc282BdE1929db023da1fe6458',
     'moonriver'     : '0x97337A9710BEB17b8D77cA9175dEFBA5e9AFE62e',
+    'klaytn'        : '0x79db0f1a83f8e743550eeb5dd5b0b83334f2f083'
 }
 
 

@@ -18,14 +18,14 @@ pip install -r requirements.txt
 
 python main.py
 ```
-Windows(рекомендую) - https://www.youtube.com/watch?v=w8JEc644K7o
-Windows - https://www.youtube.com/watch?v=EqC42mnbByc
+Windows(пример установки) - https://www.youtube.com/watch?v=w8JEc644K7o
 ```
 pip install virtualenv
 virtualenv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 
+# команда запуска скрипта
 python main.py
 ```
 
@@ -33,7 +33,7 @@ python main.py
 
 settings.py - настройки
 
-private_keys.txt - Aptos приватные ключи
+private_keys.txt - приватные ключи кошельков для работы
 
 withdraw_addresses - адреса для вывода с бинанса
 
