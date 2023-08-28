@@ -72,4 +72,5 @@ LAYERZERO_CHAINS_ID = {
     'nova'      : 175,
     'kava'      : 177,
     'meter'     : 176,
+    'dfk'       : 115
 }

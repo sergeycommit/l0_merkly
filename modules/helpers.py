@@ -105,7 +105,7 @@ def checker_total_fee(chain, gas):
 async def get_prices():
     prices = {
         'ETH': 0, 'BNB': 0, 'AVAX': 0, 'MATIC': 0, 'FTM': 0, 'xDAI': 0, 'CELO': 0, 'COREDAO': 0, 'ONE': 0, 'MOVR': 0,
-        'GLMR': 0
+        'GLMR': 0, 'KLAY': 0
     }
 
     async def get_get(session, symbol):
@@ -160,6 +160,7 @@ async def get_prices():
         'harmony': prices['ONE'],
         'moonbeam': prices['GLMR'],
         'moonriver': prices['MOVR'],
+        'klaytn':   prices['KLAY']
     }
 
     return data
