@@ -1,6 +1,5 @@
 # Автор
-Sergey https://t.me/just_commit
-Наш канал: https://t.me/my_utils
+Наш канал: https://t.me/ai_news_channel_ru
 
 
 # Запуск
